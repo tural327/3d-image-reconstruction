@@ -80,3 +80,46 @@ for second part our mission was making input for EssentialMatrix
   ```python
  points, R_est, t_est, mask_pose = cv2.recoverPose(E,xy_undistorted1,xy_undistorted2)
   ```
+Last step for finding triangulate points we need find P1 and P2 camera matrix:
+  ```python
+ P1 = np.column_stack((np.matmul(matrix,R), t_vecs[0]))
+ P2 = np.concatenate((np.dot(matrix,R_est),np.dot(matrix,t_est)), axis = 1)
+  ```
+Now we are ready for get our triangulate points
+
+  ```python
+homogen_points = cv2.triangulatePoints(P1,P2,xy_undistorted1,xy_undistorted2)
+  ```
+## 2. Build Desktop app ##
+
+## How does it works ?
+So... if you run [desk_app.py](https://github.com/tural327/3d-image-reconstruction/blob/main/desk_app.py) file you will see this window:
+
+<p align="center">
+    <img src="https://github.com/tural327/3d-image-reconstruction/blob/main/main_display.png"/>
+</p>
+
+* Strat - is using for starting camere (in my case it was webcam)
+* Take my first image and take my second image - is using to take images respectively first and second also **after taking image** each you will see 
+* Delete my first image and Delete my scond image - for using removing image if you dont like 
+* Make my 3D - after taking 2 images if you will click that button you will see 3D points displaying by using matplotlib
+
+If you will click just **Make my 3D** you will see result of dog images I did it just for checking:
+<p align="center">
+    <img src="https://github.com/tural327/3d-image-reconstruction/blob/main/basic.gif"/>
+</p>
+
+Now we will take some image by using laptop camera and trying to build 3d coordinates:
+My image:
+<p align="center">
+    <img src="https://github.com/tural327/3d-image-reconstruction/blob/main/take_img.png"/>
+</p>
+
+And result was:
+
+<p align="center">
+    <img src="https://github.com/tural327/3d-image-reconstruction/blob/main/photo_result.gif"/>
+</p>
+
+## Note  ##
+camera calibration we can use my values as just for testing but its not giving us reasonable result for make it more accurate you need to get your own calibrated results 
