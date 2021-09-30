@@ -17,7 +17,7 @@
 
 ## 1. Camera calibration ##
 
-For calibrationg camera I used [Opencv module](https://docs.opencv.org/3.4.15/dc/dbb/tutorial_py_calibration.html)  for calibrate my camera. Itook several **CHECKERBOARD**images using my notebook camera and saved my camera matrix such as : [distortion](https://github.com/tural327/3d-image-reconstruction/blob/main/distortion.npy),[matrix](https://github.com/tural327/3d-image-reconstruction/blob/main/matrix.npy),[t_vecs](https://github.com/tural327/3d-image-reconstruction/blob/main/t_vecs.npy)
+For calibrationg camera I used [Opencv module](https://docs.opencv.org/3.4.15/dc/dbb/tutorial_py_calibration.html)  for calibrate my camera. Itook several **CHECKERBOARD**images using my notebook camera and saved my camera matrix such as : [distortion](https://github.com/tural327/3d-image-reconstruction/blob/main/distortion.npy),[matrix](https://github.com/tural327/3d-image-reconstruction/blob/main/matrix.npy),[t_vecs](https://github.com/tural327/3d-image-reconstruction/blob/main/t_vecs.npy),[r_vecs](https://github.com/tural327/3d-image-reconstruction/blob/main/r_vecs.npy)
 ## 2. Finding EssentialMatrix ##
 Parametrs which we got by doing calibration loaded [my3d](https://github.com/tural327/3d-image-reconstruction/blob/main/my3d.py) file for second step images for making 3d reconstruction we need find image matching keypoints points for that I used cv2.ORB_create()
 ```python
